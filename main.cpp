@@ -22,9 +22,13 @@ int *valueToAnswers(int value) {
 }
 
 void getAnswer() {
-    int value, *a;
+    int value, *a = NULL;
     
     for (value = 0; value < pow(4, 10); value++) {
+        if (a != NULL) {
+            delete []a;
+            a = NULL;
+        }
         a = valueToAnswers(value);
         //第2题
         if (!((a[4] == 2 && a[1] == 0)
@@ -156,7 +160,8 @@ void getAnswer() {
         for (int i = 0; i < 10; i++) {
             std::cout << i+1 << ". " << (char)(a[i]+65) << "\n";
         }
-        delete a;
+        delete []a;
+        a = NULL;
     }
 }
 
